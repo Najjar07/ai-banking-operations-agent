@@ -1,0 +1,9 @@
+amount,network_status,balance,retry_count,failure_reason
+5000,1,10000,0,success
+15000,0,20000,2,network_timeout
+30000,1,1000,1,insufficient_funds
+50000,0,70000,3,gateway_failure
+10000,1,50000,0,success
+45000,1,2000,2,insufficient_funds
+70000,0,90000,4,gateway_failure
+20000,0,25000,1,network_timeout
