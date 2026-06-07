@@ -8,21 +8,33 @@ BASE_DIR = os.path.dirname(
     )
 )
 
+LOGS_DIR = os.path.join(BASE_DIR, "logs")
+
 LOG_FILE = os.path.join(
-    BASE_DIR,
-    "logs",
+    LOGS_DIR,
     "prediction_logs.json"
 )
 
 
 def save_log(log_data):
 
+    # Create logs folder if missing
+    os.makedirs(LOGS_DIR, exist_ok=True)
+
+    # Read existing logs
+    try:
+        with open(LOG_FILE, "r") as file:
+            logs = json.load(file)
+
+    except:
+        logs = []
+
+    # Add timestamp
     log_data["timestamp"] = str(datetime.now())
 
-    logs = [log_data]
+    # Append log
+    logs.append(log_data)
 
-    os.makedirs("logs", exist_ok=True)
-
-    # WRITE FILE
+    # Save logs
     with open(LOG_FILE, "w") as file:
         json.dump(logs, file, indent=4)
