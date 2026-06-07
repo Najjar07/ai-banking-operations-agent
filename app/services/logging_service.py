@@ -21,6 +21,8 @@ def save_log(log_data):
 
     logs = [log_data]
 
+    os.makedirs("logs", exist_ok=True)
+
     # WRITE FILE
     with open(LOG_FILE, "w") as file:
         json.dump(logs, file, indent=4)
